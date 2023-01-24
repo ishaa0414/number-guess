@@ -1,26 +1,26 @@
 let btn=document.getElementById('btn');
 let message=document.getElementById('sc');
-var raNum=document.getElementsByClassName('number');
-raNum= parseInt(Math.random()*100 + 1);
+var randomshow=document.getElementById('show');
+let random= parseInt(Math.random()*100 + 1);
 let score=document.getElementById('score');
 let background=document.getElementById('background');
 let chances=100;
-let highscore=document.getElementById('highscore');
-highscore=0;
+let highscore=document.getElementById('high');
 function maincheck(){
-    score.innerHTML=chances;
+    score.innerText=chances;
+    
     let input=parseInt(document.getElementById("guessid").value);
    
-    if(input == raNum){
+    if(input == random){
         message.innerHTML="🤩🤩Hurray You Won🤩";
 background.style.backgroundColor='#37A02A ';
-if(chances>highscore){
-    highscore.innerText=`$(chances)`;
-    btn.style.visibility="visible";
-}
+randomshow.innerHTML=random;
+btn.style.visibility="visible";
+highscore.innerText=chances;
+
     }
     else {
-        if(input < raNum){
+        if(input < random){
       message.innerHTML="Your Guess is Low";
       background.style.backgroundColor='#4B0D1D ';
     }
@@ -36,7 +36,10 @@ chances--;
 
 function reloadgame(){
 background.style.backgroundColor='#28393A';
-let inputbox=document.getElementById("guessid").value;
-inputbox.innerText=null;
+let inputbox=document.getElementById("guessid");
+inputbox.value=" ";
 chances=100;
+score.innerText=chances;
+highscore.innerText=0;
+randomshow.innerText='?';
 }
